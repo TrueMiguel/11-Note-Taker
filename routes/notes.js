@@ -2,7 +2,7 @@
 
 const notes = require('express').Router();
 const {v4: uuidv4 } = require('uuid');
-const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
+const { readAndAppend, readFromFile, writeToFile } = require('../helpers/fsUtils');
 
 // GET route for reading note db.json   
 notes.get('/', (req,res) => 
@@ -37,6 +37,26 @@ notes.post('/', (req,res) => {
         res.json('Error in posting feedback')
     }
 
+});
+
+//working on delete request. Got most of it. Don't know if the /:id is the correct means, Need to double check how this is getting the id. 
+// making a delete request for a specific 
+notes.delete('/:id', (req,res) => {
+
+    // getting the id
+    const noteId = req.params.id;
+    readFromFile('./db/db.json')
+        .then((data) => JSON.parse(data))
+        .then((json) => {
+
+            // making a new array of all the notes with out the one with the provided Id.
+            const result = json.filter((noteId) => noteId.id !== noteId)
+
+            //Saving the array to the file
+            writeToFile('./db/db.json', result)
+
+            res.json(`Item ${noteId} has been deleted`)
+        });
 });
 
 module.exports = notes;
