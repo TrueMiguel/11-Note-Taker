@@ -1,15 +1,5 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text",
-        "id": "45"
-    },
-    {
-        "title": "Blank blank",
-        "text": "Blah this is words",
-        "id": "c203ebcc-9d76-4409-a6dd-a1156004a6cb"
-    },
-    {
         "title": "Test Note",
         "text": "This is a test note",
         "id": "e239681a-eb06-4bba-951b-2e532bb4e202"

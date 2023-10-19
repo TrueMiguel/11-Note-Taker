@@ -45,12 +45,13 @@ notes.delete('/:id', (req,res) => {
 
     // getting the id
     const noteId = req.params.id;
+    console.log(noteId);
     readFromFile('./db/db.json')
         .then((data) => JSON.parse(data))
         .then((json) => {
 
             // making a new array of all the notes with out the one with the provided Id.
-            const result = json.filter((noteId) => noteId.id !== noteId)
+            const result = json.filter((id) => id.id !== noteId)
 
             //Saving the array to the file
             writeToFile('./db/db.json', result)
