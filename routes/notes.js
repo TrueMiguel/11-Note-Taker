@@ -51,6 +51,7 @@ notes.delete('/:id', (req,res) => {
         .then((json) => {
 
             // making a new array of all the notes with out the one with the provided Id.
+            //error I was stuck at was the json.filter((id)) original I was using noteId as the reference, but it seemded to be confliced since there is a noteid higher in the formula and possibly that there is noteid at the end. either way it is working now. 
             const result = json.filter((id) => id.id !== noteId)
 
             //Saving the array to the file
